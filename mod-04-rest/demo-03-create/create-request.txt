@@ -1,0 +1,54 @@
+POST https://api.partnercenter.microsoft.com/v1/customers HTTP/1.1
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS5wYXJ0bmVyY2VudGVyLm1pY3Jvc29mdC5jb20iLCJpYXQiOiIxNDU3NjkyNjI0IiwibmJmIjoxNDU3NjkyOTI0LCJleHAiOjE0NTc2OTY4MjMsImFjciI6IjEiLCJhbXIiOiJwd2QiLCJhcHBpZCI6ImZhM2Q5YTBjLTNmYjAtNDJjYy05MTkzLTQ3YzdlY2QyZWRiZCIsImFwcGlkYWNyIjoiMiIsImZhbWlseV9uYW1lIjoiVEVTVCIsImdpdmVuX25hbWUiOiJQQ0FQSSIsImlwYWRkciI6IjczLjE3MS4xNDYuMzgiLCJuYW1lIjoiUENBUEkgQWRtaW4gQWdlbnQiLCJvaWQiOiI3M2UzMTRlMy1lNzhiLTQ2ODktODIwYS1kYjVjZjIzMjU0NTIiLCJwdWlkIjoiMTAwMzAwMDA5NjJFQUZFNyIsInNjcCI6InVzZXJfaW1wZXJzb25hdGlvbiIsIm5hbWVpZCI6InJfR3oxVUdOejZrRkZDcjNZZ2VRS2RLSU9ZRkRTM1ctZ1lUX2stQ1JGWGMiLCJ0aWQiOiJiNmI5MTgyMC05OWU2LTRjMTAtOWM1YS0wYTYxZWQyYWQ5NWEiLCJ1bmlxdWVfbmFtZSI6ImFkbWluQGNzcHRpcDU3cy5vbm1pY3Jvc29mdC5jb20iLCJ1cG4iOiJhZG1pbkBjc3B0aXA1N3Mub25taWNyb3NvZnQuY29tIiwidmVyIjoiMS4wIiwicm9sZSI6WyJHbG9iYWxBZG1pbmlzdHJhdG9yIiwiQWRtaW5BZ2VudCIsIkFwcGxpY2F0aW9uUmVnaXN0cmF0aW9uQWRtaW4iXSwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9wYXJ0bmVycHJvZ3JhbSI6IlJlc2VsbGVyIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9oYXNkYXBwcml2aWxlZ2VzIjoiVHJ1ZSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvdXNlcnRva2VuIjoiZXlKMGVYQWlPaUpLVjFRaUxDSmhiR2NpT2lKU1V6STFOaUlzSW5nMWRDSTZJazF1UTE5V1dtTkJWR1pOTlhCUFdXbEtTRTFpWVRsbmIwVkxXU0lzSW10cFpDSTZJazF1UTE5V1dtTkJWR1pOTlhCUFdXbEtTRTFpWVRsbmIwVkxXU0o5LmV5SmhkV1FpT2lKb2RIUndjem92TDJkeVlYQm9MbmRwYm1SdmQzTXVibVYwSWl3aWFYTnpJam9pYUhSMGNITTZMeTl6ZEhNdWQybHVaRzkzY3k1dVpYUXZZalppT1RFNE1qQXRPVGxsTmkwMFl6RXdMVGxqTldFdE1HRTJNV1ZrTW1Ga09UVmhMeUlzSW1saGRDSTZNVFExTnpZNU1qWXlOQ3dpYm1KbUlqb3hORFUzTmpreU5qSTBMQ0psZUhBaU9qRTBOVGMyT1RZNE1qUXNJbUZqY2lJNklqRWlMQ0poYlhJaU9sc2ljSGRrSWwwc0ltRndjR2xrSWpvaVptRXpaRGxoTUdNdE0yWmlNQzAwTW1OakxUa3hPVE10TkRkak4yVmpaREpsWkdKa0lpd2lZWEJ3YVdSaFkzSWlPaUl5SWl3aVptRnRhV3g1WDI1aGJXVWlPaUpVUlZOVUlpd2laMmwyWlc1ZmJtRnRaU0k2SWxCRFFWQkpJaXdpYVhCaFpHUnlJam9pTnpNdU1UY3hMakUwTmk0ek9DSXNJbTVoYldVaU9pSlFRMEZRU1NCQlpHMXBiaUJCWjJWdWRDSXNJbTlwWkNJNklqY3paVE14TkdVekxXVTNPR0l0TkRZNE9TMDRNakJoTFdSaU5XTm1Nak15TlRRMU1pSXNJbkIxYVdRaU9pSXhNREF6TURBd01EazJNa1ZCUmtVM0lpd2ljMk53SWpvaWRYTmxjbDlwYlhCbGNuTnZibUYwYVc5dUlpd2ljM1ZpSWpvaWNsOUhlakZWUjA1Nk5tdEdSa055TTFsblpWRkxaRXRKVDFsR1JGTXpWeTFuV1ZSZmF5MURVa1pZWXlJc0luUnBaQ0k2SW1JMllqa3hPREl3TFRrNVpUWXROR014TUMwNVl6VmhMVEJoTmpGbFpESmhaRGsxWVNJc0luVnVhWEYxWlY5dVlXMWxJam9pWVdSdGFXNUFZM053ZEdsd05UZHpMbTl1YldsamNtOXpiMlowTG1OdmJTSXNJblZ3YmlJNkltRmtiV2x1UUdOemNIUnBjRFUzY3k1dmJtMXBZM0p2YzI5bWRDNWpiMjBpTENKMlpYSWlPaUl4TGpBaWZRLmFHUlVvalBsNU56ekc0S0Zhb1ZMUTVTRGoySHN3ZXlrTjFzMnVCdGxBQlRvTlJGcGdxQmlQa0xPTXFteGlmUXZiRk1kcVFmQ1V0Z0M3VS16dlR3SUpiNEZVUkFVMVF2ajdKdjZSYmJhb3NMb1oxVkxSNll3Ti1TcnRDYVRVRjhaYnRQdHN5ZndlN1FRejZXTW1sb1lZUmtzdFRoeTdVd25Vc2x3dDVmdzZGZGY4OXFzTzRtczN2OWpiTDdOSUlZek1HaEVVeUNxd1dtNDhMN0RDeEJuVkNSMG5tVDZlUFBwYW1WdWFDYVRnSlo4MUZOUWFVaG5hNkVpTURJdGVadk5hWVNYS3NnMzlwSmVRX09aR2hFdHNhV19KZUxqWk5Ba2pldHA5NzRoVTdVZnlBWDRGcVhMYTVuQVZTS3duQnFoRllGRF9xRU1KeWNSVlNlMThCdnBkdyIsImF1ZCI6Imh0dHBzOi8vYXBpLnBhcnRuZXJjZW50ZXIubWljcm9zb2Z0LmNvbSJ9.mget7cWMXf3e6I5VsTS1Y98GayQvXcSm-1V1kTWUd1ky920Om7cIh6zXCAMWQgLaWTm6kV1ifmsp1Q7m9LZpuGZNp2ut32vgD-mf92m3WvPk8ReTg29S-6yGa41POYjGlS76dUJ9ux-wDxALCtxXJ1dFOocqu2hR9v1nPu9DtAIMkuX4uG_uK-vhFH59GMjM9CY_P-AOk_8NpR8kaxH7hHI9FOFZCJ3H-4_7rEPrJIeQvsPSOMRp8xerfxWfh8CbAnils-1Ov729AMXmxnxaNdaFnahhbzMAItvgldGK652Gn62SlznH894Bg-awPkdykG7nnanE9lsp19YGNvZbYg
+Accept: application/json
+MS-RequestId: f4e8b31c-d034-4fc9-ad50-77de1e943822
+MS-CorrelationId: ce03227a-88d8-41aa-8867-fc56735930fb
+X-Locale: en-US
+MS-PartnerCenter-Client: Partner Center .NET SDK
+Content-Type: application/json
+Host: api.partnercenter.microsoft.com
+Content-Length: 754
+Expect: 100-continue
+
+{
+  "Id": null,
+  "CommerceId": null,
+  "CompanyProfile": {
+    "TenantId": null,
+    "Domain": "SampleApplication1379477492.onmicrosoft.com",
+    "CompanyName": null,
+    "Attributes": {
+      "ObjectType": "CustomerCompanyProfile"
+    }
+  },
+  "BillingProfile": {
+    "Id": null,
+    "FirstName": null,
+    "LastName": null,
+    "Email": "SomeEmail@Outlook.com",
+    "Culture": "EN-US",
+    "Language": "En",
+    "CompanyName": "Some Company1379477492",
+    "DefaultAddress": {
+      "Country": "US",
+      "Region": null,
+      "City": "Redmond",
+      "State": "WA",
+      "AddressLine1": "One Microsoft Way",
+      "AddressLine2": null,
+      "PostalCode": "98052",
+      "FirstName": "Admin",
+      "LastName": "In Test",
+      "PhoneNumber": "4257778899"
+    },
+    "Attributes": {
+      "ObjectType": "CustomerBillingProfile"
+    }
+  },
+  "RelationshipToPartner": "none",
+  "AllowDelegatedAccess": null,
+  "UserCredentials": null,
+  "Attributes": {
+    "ObjectType": "Customer"
+  }
+}

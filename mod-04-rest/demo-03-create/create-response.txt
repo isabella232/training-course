@@ -1,0 +1,49 @@
+HTTP/1.1 201 Created
+Content-Length: 847
+Content-Type: application/json; charset=utf-8
+MS-CorrelationId: ce03227a-88d8-41aa-8867-fc56735930fb
+MS-RequestId: f4e8b31c-d034-4fc9-ad50-77de1e943822
+MS-CV: lkvnPsgUH0C6h0Ky.0
+MS-ServerId: 201020822
+Date: Fri, 11 Mar 2016 10:48:26 GMT
+
+{
+  "id": "73c3b564-0cef-463b-828a-71bee1acf0a4",
+  "commerceId": "735adde0-ac51-4806-af50-ade63a8b48f0",
+  "companyProfile": {
+    "tenantId": "73c3b564-0cef-463b-828a-71bee1acf0a4",
+    "domain": "SampleApplication1379477492.onmicrosoft.com",
+    "attributes": {
+      "objectType": "CustomerCompanyProfile"
+    }
+  },
+  "billingProfile": {
+    "id": "50818177-3abb-4cea-a854-ed38eb8caee8",
+    "email": "SomeEmail@Outlook.com",
+    "culture": "en-US",
+    "language": "En",
+    "companyName": "Some Company1379477492",
+    "defaultAddress": {
+      "country": "US",
+      "city": "Redmond",
+      "state": "WA",
+      "addressLine1": "One Microsoft Way",
+      "postalCode": "98052",
+      "firstName": "Admin",
+      "lastName": "In Test",
+      "phoneNumber": "4257778899"
+    },
+    "attributes": {
+      "etag": "-2942729486803454303",
+      "objectType": "CustomerBillingProfile"
+    }
+  },
+  "relationshipToPartner": "none",
+  "userCredentials": {
+    "userName": "admin",
+    "password": ";_WF0T{w"
+  },
+  "attributes": {
+    "objectType": "Customer"
+  }
+}

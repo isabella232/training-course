@@ -1,0 +1,18 @@
+﻿{
+  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentParameters.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "adminUsername": {
+      "value": "andrewconnell"
+    },
+    "adminPassword": {
+      "value": "v5R$nThC9N$H"
+    },
+    "dnsLabelPrefix": {
+      "value": "myumbuntuvm"
+    },
+    "ubuntuOSVersion": {
+      "value": "14.04.2-LTS"
+    }
+  }
+}

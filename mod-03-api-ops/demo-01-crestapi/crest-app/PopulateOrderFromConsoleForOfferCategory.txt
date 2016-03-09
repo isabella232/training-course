@@ -1,0 +1,96 @@
+private static dynamic PopulateOrderFromConsoleForOfferCategory(string offerCategoryId, string customerCid, string countryCode, string locale, string token) {
+  var offersResponse = OfferCatalogPartnerCenterApi.GetOffers(offerCategoryId, countryCode, locale, token);
+  dynamic order = new {
+    line_items = new List<dynamic>(),
+    recipient_customer_id = customerCid
+  };
+
+  int nrOfLineItems = 0;
+
+  bool done = false;
+
+  Console.WriteLine("Hit enter to continue");
+  Console.ReadLine();
+
+  Console.Clear();
+  Console.WriteLine("Select offer category for placing an order");
+  do {
+    Console.WriteLine("OfferCategory: {0}", offerCategoryId);
+    int index = 1;
+    foreach (var offerItem in offersResponse.items) {
+      Console.WriteLine("{0} {1}", index++, offerItem.name.ToString());
+    }
+
+    Console.Write("\nSelect Offer [1...{0}]:", index);
+    int selectedOfferIndex = Convert.ToInt32(Console.ReadLine().Trim());
+
+    var selectedOffer = offersResponse.items[selectedOfferIndex - 1];
+
+    bool validQuantity = false;
+
+    do {
+      Console.Write("\nQuantity {0} to {1}: ", selectedOffer.minimumQuantity, selectedOffer.maximumQuantity);
+      string inputQuantity = Console.ReadLine().Trim();
+      int quantity = 1;
+      if (!int.TryParse(inputQuantity, out quantity)) {
+        done = false;
+      }
+
+      int minimumQuantity = int.Parse(selectedOffer.minimumQuantity.ToString());
+      int maximumQuantity = int.Parse(selectedOffer.maximumQuantity.ToString());
+
+      if (quantity >= minimumQuantity && quantity <= maximumQuantity) {
+        validQuantity = true;
+      }
+
+      Console.Write("\nFriendly Name (or hit Enter for none): ");
+      string inputFriendlyName = Console.ReadLine().Trim();
+      if (!string.IsNullOrWhiteSpace(inputFriendlyName)) {
+        order.line_items.Add(new {
+          // has to be a unique number for each line item
+          // recommendation is to start with 0
+          line_item_number = nrOfLineItems,
+
+          // this is the offer uri for the offer that is being purchased, refer to the excel sheet for this
+          offer_uri = selectedOffer.uri.ToString(),
+
+          // This is the quantity for this offer
+          quantity = quantity,
+
+          // This is friendly name
+          friendly_name = inputFriendlyName
+        });
+      } else {
+        order.line_items.Add(new {
+          // has to be a unique number for each line item
+          // recommendation is to start with 0
+          line_item_number = nrOfLineItems,
+
+          // this is the offer uri for the offer that is being purchased, refer to the excel sheet for this
+          offer_uri = selectedOffer.uri.ToString(),
+
+          // This is the quantity for this offer
+          quantity = quantity,
+        });
+      }
+    }
+    while (!validQuantity);
+
+    Console.Write("\nDo you want to add another line item (y/n)? ");
+    string input = Console.ReadLine().Trim();
+
+    switch (input) {
+      case "y":
+      case "Y":
+        nrOfLineItems++;
+        done = false;
+        break;
+      default:
+        done = true;
+        break;
+    }
+  }
+  while (!done);
+
+  return order;
+}
