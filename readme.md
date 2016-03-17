@@ -66,7 +66,7 @@ Pre-requisites for the course are that the viewer already has experience as a de
 
 The labs are written for developers using the .NET Framework in C# using Visual Studio 2015 with Update 1 on Windows 10.
 
-1. Introduction to the Partner Center SDK (*coming soon*)
+1. **[Introduction to the Partner Center SDK](hol-01-intro-pcsdk)**
 1. Using the Partner Center SDK with an Existing CREST API Based Application (*coming soon*)
 1. Implementing Parameter Validation for Create Customer and Create Order (*coming soon*)
 1. Working with Invoices and Invoice Line Items (*coming soon*)
@@ -77,4 +77,5 @@ The labs are written for developers using the .NET Framework in C# using Visual 
 
 | Date | Comment |
 | ----: | ------- |
+| March 17, 2016 | Added HOL #1. |
 | March 15, 2016 | Initial version. |
