@@ -54,6 +54,11 @@ In order to configure the sample project, you need to first collect some details
   1. Update the application setting **MicrosoftId** to the value of the *Partner's Microsoft ID* you copied from the Partner Center above.
   1. Update the application setting **DefaultDomain** to the value you copied from the Partner Center above.
   1. Update the application setting **ExistingCustomerMicrosoftId** to the value of the *Customer's Microsoft ID* you copied from the Partner Center above.
+1. Verify the `System.Web.Helpers` is present.
+  1. Within the **Solution Explorer**, expand the **References** node. If the `System.Web.Helpers` assembly is not showing a yellow error icon, everything is fine and you can skip the next ******* steps. However if a yellow warning icon is showing next to it, continue to the next step.
+  1. Right-click the project within the **Solution Explorer** and select **Manage NuGet Packages...**.
+    1. Find and install the following package:
+      - Microsoft.AspNet.WebHelpers
 1. Test the application to verify everything has been configured correctly:
   1. Before starting the application, launch [Fiddler](http://www.telerik.com/fiddler), an HTTP debugging proxy, to see the actual calls the application is making to the CREST API. This will allow you to verify the sample application can successfully authenticate to Azure AD the CREST API.
   1. Save your changes and press **F5** to test the application.
@@ -69,7 +74,7 @@ Congratulations! In this exercise you took an existing .NET application written 
 
 ## Exercise 2: Use Partner Center REST API to list Office 365 Offers
 
-In this exercise you will take the .NET application you configured in the previous exercise in this hands-on-lab and update it to list all Office 365 offers using the Partner Center REST API. 
+In this exercise you will take the .NET application you configured in the previous exercise in this hands-on-lab and update it to list all Office 365 offers using the Partner Center REST API.
 
 1. Open the sample project **Microsoft.Partner.CSP.Api.Samples** if it is not already open in Visual Studio 2015. *This is the same project from the previous lab exercise above.*
 
@@ -80,7 +85,7 @@ Change the sample application from using a hard-coded list of offers to instead 
 1. First, because the code will call a REST API and get a response in JSON format, add a library to make it easier to work with JSON data in C#:
   1. Within the **Solution Explorer** tool window, right-click the project and select **Manage NuGet Packages..**
   1. Find and install the following package:
-    - Newtonsoft.Json *v7.0.1*
+    - Newtonsoft.Json *v8.0.1*
 1. Add a new `OfferCatalog.cs` class to the project:
   1. Within the **Solution Explorer** tool window, right-click the project and select **Add** :arrow_right: **Class**.
   1. Name the class `OfferCatalogPartnerCenterApi.cs` and click **Add**.
@@ -97,9 +102,7 @@ Change the sample application from using a hard-coded list of offers to instead 
   1. Add a new method that returns a dynamic value:
 
     ```c#
-    public static dynamic GetOfferCategories(string countryCode, 
-                                             string locale, 
-                                             string token){
+    public static dynamic GetOfferCategories(string countryCode, string token){
     }
     ```
   
@@ -109,8 +112,7 @@ Change the sample application from using a hard-coded list of offers to instead 
     // create endpoint to the Partner Center REST API
     var endpoint = string.Format("{0}/v1/offercategories?country={1}&locale={2}",
                                   ConfigurationManager.AppSettings["PartnerCenterApiEndpoint"],
-                                  countryCode,
-                                  locale);
+                                  countryCode);
     ```
 
   1. Next, create the HTTP request object and configure the HTTP method type as well as all the necessary request headers, including the authorization header that will include the OAuth2 access token:
@@ -123,6 +125,7 @@ Change the sample application from using a hard-coded list of offers to instead 
     
     // set HTTP request headers
     request.Headers.Add("MS-Contract-Version", "v1");
+    request.Headers.Add("X-Locale", "en-US");
     request.Headers.Add("MS-CorrelationId", Guid.NewGuid().ToString());
     request.Headers.Add("MS-RequestId", Guid.NewGuid().ToString());
     
@@ -166,8 +169,7 @@ Change the sample application from using a hard-coded list of offers to instead 
 
     ```c#
     public static dynamic GetOffers(string offerCategoryId, 
-                                    string countryCode, 
-                                    string locale, 
+                                    string countryCode,
                                     string token) {
     }
     ```
@@ -176,10 +178,9 @@ Change the sample application from using a hard-coded list of offers to instead 
 
     ```c#
     // create endpoint to the Partner Center REST API
-    var endpoint = string.Format("{0}/v1/offers?country={1}&locale={2}&offer_category_id={3}", 
+    var endpoint = string.Format("{0}/v1/offers?country={1}&offer_category_id={2}", 
                                  ConfigurationManager.AppSettings["PartnerCenterApiEndpoint"], 
-                                 countryCode, 
-                                 locale, 
+                                 countryCode,
                                  offerCategoryId);
     ```
 
@@ -192,6 +193,7 @@ Change the sample application from using a hard-coded list of offers to instead 
     request.Accept = "application/json";
   
     // set HTTP request headers
+    request.Headers.Add("X-Locale", "en-US");
     request.Headers.Add("MS-Contract-Version", "v1");
     request.Headers.Add("MS-CorrelationId", Guid.NewGuid().ToString());
     request.Headers.Add("MS-RequestId", Guid.NewGuid().ToString());
@@ -241,7 +243,7 @@ Change the sample application from using a hard-coded list of offers to instead 
     Console.WriteLine("Offer Category Information");
     Console.WriteLine("=========================================");
     Console.WriteLine("Id\t\t: {0}", offerCategory.id);
-    Console.WriteLine("Category\t: {0}", offerCategory.category);
+    Console.WriteLine("Category\t: {0}", offerCategory.name);
     Console.WriteLine("Rank\t\t: {0}", offerCategory.rank);
   
     Console.WriteLine("=========================================");
@@ -299,6 +301,7 @@ The existing application leverages the CREST API which uses Azure AD access toke
     request.Accept = "application/json";
     
     // set HTTP request headers
+    request.Headers.Add("X-Locale", "en-US");
     request.Headers.Add("MS-Contract-Version", "v1");
     request.Headers.Add("MS-CorrelationId", Guid.NewGuid().ToString());
     request.Headers.Add("MS-RequestId", Guid.NewGuid().ToString());
@@ -387,7 +390,6 @@ The existing application leverages the CREST API which uses Azure AD access toke
     foreach (var offerCategory in offerCategoriesResponse.items) {
       var offersResponse = OfferCatalogPartnerCenterApi.GetOffers(offerCategory.category.ToString(), 
                                                                   "US", 
-                                                                  "en-US", 
                                                                   partnerCenterApiAuthorizationToken.AccessToken);
       Console.WriteLine("Offers in {0} is {1}", offerCategory.category.ToString(), offersResponse.totalCount);
     }
@@ -421,7 +423,7 @@ In this exercise you will take the .NET application you configured in the previo
 
     ```xml
     <add key="PartnerCenterApiEndpoint" 
-        value="https://partnerapi.store.microsoft.com" / 
+        value="https://api.partnercenter.microsoft.com" / 
     ```
 
 1. Update the `Order` class to include new methods that use the Partner Center REST API:
@@ -430,9 +432,8 @@ In this exercise you will take the .NET application you configured in the previo
   1. Add a new method that will prompt the user to enter an order in the console:
 
     ```c#
-    public static dynamic PopulateOrderFromConsole(string customerCid, 
-                                                   string countryCode, 
-                                                   string locale, 
+    public static dynamic PopulateOrderFromConsole(string customerCid,
+                                                   string countryCode,
                                                    string token) {
     }
     ```
@@ -441,7 +442,7 @@ In this exercise you will take the .NET application you configured in the previo
 
     ```c#
     bool InvalidInput = false;
-    var offerCategoriesResponse = OfferCatalogPartnerCenterApi.GetOfferCategories(countryCode, locale, token);
+    var offerCategoriesResponse = OfferCatalogPartnerCenterApi.GetOfferCategories(countryCode, token);
     Console.WriteLine("Hit enter to continue");
     Console.ReadLine();
 
@@ -484,7 +485,6 @@ In this exercise you will take the .NET application you configured in the previo
     return PopulateOrderFromConsoleForOfferCategory(offerCategoryResponse, 
                                                     customerCid, 
                                                     countryCode, 
-                                                    locale, 
                                                     token);
     ```
 
@@ -502,7 +502,6 @@ In this exercise you will take the .NET application you configured in the previo
     ```c#
     var existingCustomerOrder = Order.PopulateOrderFromConsole(existingCustomerCid,
                                                                "US",
-                                                               "en-US",
                                                                partnerCenterApiAuthorizationToken.AccessToken);
     ```
 
