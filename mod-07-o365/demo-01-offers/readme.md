@@ -13,6 +13,7 @@ This demo shows how to query offer categories & offers using the Partner Center 
 1. Show the file for different service request actions:
   - `\Offers\GetOfferCategories.cs`
   - `\Offers\GetOffers.cs`
+  - `\Offers\GetPagedOffers.cs`
 
 ## Partner Center REST API
 
