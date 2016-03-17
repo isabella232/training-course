@@ -11,11 +11,9 @@ This demo shows how to query orders using the Partner Center SDK.
   - `IScenarioContext.UserPartnerOperations()`
   - `IScenarioContext.LoginUserToAad()`
 1. Show the file for different service request actions:
-  - `Features\Orders\GetOrders.cs`
-  - `Features\Orders\GetPagedOrders.cs`
-  - `Features\Orders\GetOrder.cs`
-  - `Features\Orders\CreateOrder.cs`
-  - `Features\Orders\UpdateOrder.cs`
+  - `Orders\GetOrders.cs`
+  - `Orders\GetOrderDetails.cs`
+  - `Orders\CreateOrder.cs`
 
 ## Partner Center REST API
 

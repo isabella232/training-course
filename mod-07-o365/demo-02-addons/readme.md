@@ -11,7 +11,7 @@ This demo shows how to query offer addons using the Partner Center SDK.
   - `IScenarioContext.UserPartnerOperations()`
   - `IScenarioContext.LoginUserToAad()`
 1. Show the file for different service request actions:
-  - `Features\Offers\OffersDetail.cs`
+  - `Offers\GetOffers.cs`
 
 ## Partner Center REST API
 
