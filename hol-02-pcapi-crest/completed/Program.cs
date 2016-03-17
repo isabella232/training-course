@@ -67,11 +67,11 @@ namespace Microsoft.Partner.CSP.Api.V1.Samples {
         partnerCenterApiAuthorizationToken = Reseller.GetPartnerCenterApi_Token(adAuthorizationToken, appId);
 
         // get all offer categories
-        var offerCategoriesResponse = OfferCatalogPartnerCenterApi.GetOfferCategories("US", "en-US", partnerCenterApiAuthorizationToken.AccessToken);
+        var offerCategoriesResponse = OfferCatalogPartnerCenterApi.GetOfferCategories("US", partnerCenterApiAuthorizationToken.AccessToken);
 
         // write the number of offers in each category out to the console
         foreach (var offerCategory in offerCategoriesResponse.items) {
-          var offersResponse = OfferCatalogPartnerCenterApi.GetOffers(offerCategory.id.ToString(), "US", "en-US", partnerCenterApiAuthorizationToken.AccessToken);
+          var offersResponse = OfferCatalogPartnerCenterApi.GetOffers(offerCategory.id.ToString(), "US", partnerCenterApiAuthorizationToken.AccessToken);
           Console.WriteLine("Offers in {0} is {1}", offerCategory.id.ToString(), offersResponse.totalCount);
         }
 

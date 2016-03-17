@@ -452,9 +452,9 @@ namespace Microsoft.Partner.CSP.Api.V1.Samples {
       Console.ResetColor();
     }
 
-    public static dynamic PopulateOrderFromConsole(string customerCid, string countryCode, string locale, string token) {
+    public static dynamic PopulateOrderFromConsole(string customerCid, string countryCode, string token) {
       bool InvalidInput = false;
-      var offerCategoriesResponse = OfferCatalogPartnerCenterApi.GetOfferCategories(countryCode, locale, token);
+      var offerCategoriesResponse = OfferCatalogPartnerCenterApi.GetOfferCategories(countryCode, token);
       Console.WriteLine("Hit enter to continue");
       Console.ReadLine();
 
@@ -472,7 +472,7 @@ namespace Microsoft.Partner.CSP.Api.V1.Samples {
         if (input <= index) {
           InvalidInput = true;
           var offerCategoryResponse = offerCategoriesResponse.items[input - 1].id.ToString();
-          return PopulateOrderFromConsoleForOfferCategory(offerCategoryResponse, customerCid, countryCode, locale, token);
+          return PopulateOrderFromConsoleForOfferCategory(offerCategoryResponse, customerCid, countryCode, token);
         }
       }
       while (!InvalidInput);
@@ -480,8 +480,8 @@ namespace Microsoft.Partner.CSP.Api.V1.Samples {
       return null;
     }
 
-    private static dynamic PopulateOrderFromConsoleForOfferCategory(string offerCategoryId, string customerCid, string countryCode, string locale, string token) {
-      var offersResponse = OfferCatalogPartnerCenterApi.GetOffers(offerCategoryId, countryCode, locale, token);
+    private static dynamic PopulateOrderFromConsoleForOfferCategory(string offerCategoryId, string customerCid, string countryCode, string token) {
+      var offersResponse = OfferCatalogPartnerCenterApi.GetOffers(offerCategoryId, countryCode, token);
       dynamic order = new {
         line_items = new List<dynamic>(),
         recipient_customer_id = customerCid
