@@ -56,7 +56,7 @@ This demo shows how to do simple operations with the Azure Command Line Interfac
 1. Get all resource groups in JSON format
 
     ````shell
-    azure group --json
+    azure group list --json
     ````
 
 1. See what the underlying call & data returned looks like
@@ -68,5 +68,5 @@ This demo shows how to do simple operations with the Azure Command Line Interfac
 1. Create a new resource group
 
     ````shell
-    azure group create --name "test group" -l "eastus"
+    azure group create --name "testgroup" -l "eastus"
     ````
