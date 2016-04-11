@@ -4,7 +4,7 @@ The Partner Center SDK provides a superset of the earlier CREST API functionalit
 
 > You can find a completed version of the solution that you would have at the conclusion of the lab in the [completed](completed) folder. Any settings, such as IDs, passwords, keys and other partner-specific values have been removed from the completed solution, but if you run into trouble you can use the final solution as a template to compare your work against if you have trouble.
 
-This Hands on Lab is hosted online [here](http://aka.ms/pcsdkhol) 
+This Hands on Lab is hosted online [here](http://aka.ms/pcsdkhol).
 
 ## Exercise 1: Create an Azure AD Application
 

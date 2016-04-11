@@ -8,6 +8,8 @@ Pre-requisites for the course are that the viewer already has experience as a de
 
 ## Modules - Lectures & Demos
 
+> The moduls in this course have been recorded and are available in the **[Cloud Solution Provider Developers](https://channel9.msdn.com/Series/cspdev)** series on Channel9.
+
 1. **[Introductory System Concepts and Getting Started with the Partner Center SDK](mod-01-overview)**
 
   This module provides an overview for the course. We will talk about key concepts and the technical actors involved in the Partner Center SDK. It includes a brief overview of Azure AD tenants, and of how CREST API users can work with the Partner Center SDK. It also covers the basics of the object model in the Partner Center SDK.
