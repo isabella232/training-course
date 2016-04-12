@@ -4,8 +4,11 @@ The Partner Center SDK provides a superset of the earlier CREST API functionalit
 
 > You can find a completed version of the solution that you would have at the conclusion of the lab in the [completed](completed) folder. Any settings, such as IDs, passwords, keys and other partner-specific values have been removed from the completed solution, but if you run into trouble you can use the final solution as a template to compare your work against if you have trouble.
 
+<<<<<<< HEAD
 This Hands on Lab is hosted online [here](http://aka.ms/pcsdkhol).
 
+=======
+>>>>>>> 09f3ccd... add hol3
 ## Exercise 1: Create an Azure AD Application
 
 In this exercise you will create a new Azure AD application, granting it access to the Partner Center.
@@ -22,4 +25,8 @@ In this exercise you will take the console application created in the previous e
 
 In this exercise you will take the console application you have been working with in this hands-on-lab and extend it to place an order for a selected Office 365 subscription & Office 365 add-on offer.
 
+<<<<<<< HEAD
 [Get started on the lab!](lab.md)
+=======
+[Get started on the lab!](lab.md)
+>>>>>>> 09f3ccd... add hol3

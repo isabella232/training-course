@@ -1,0 +1,27 @@
+﻿@model pcsdk_validation.Models.CustomerViewModel
+
+@{
+  ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+  <tr>
+    <th>TenantId</th>
+    <th>Company Name</th>
+    <th>Domain</th>
+  </tr>
+
+  @foreach (var item in Model.Customers) {
+    <tr>
+      <td>@Html.DisplayFor(modelItem => item.TenantId)</td>
+      <td>@Html.DisplayFor(modelItem => item.CompanyName)</td>
+      <td>@Html.DisplayFor(modelItem => item.Domain)</td>
+      <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+      </td>
+    </tr>
+  }
+
+</table>
