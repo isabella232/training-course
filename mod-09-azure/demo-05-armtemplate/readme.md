@@ -64,7 +64,7 @@ Now create a new simple Linux VM using an existing template. First, find the tem
 
 1. On the left side of the **Azure Resource Manager Template Visualizer**, select the **Edit Parameter Definitions** button. This will open a dialog for you to modify the parameters. 
   1. Set the `adminUsername` & `adminPassword` for the administrator account.
-  1. Set the name of the `dnsLabelPrefix` to: **muUmbuntuVm**
+  1. Set the name of the `dnsLabelPrefix` to: **myUmbuntuVm**
   1. After making changes, save the parameters file to your local machine. A sample can be seen in the [parameters.json](parameters.json) file.
 
 1. Next, double click on the resources within the visualizer. You can see how the dependencies are organized and the different settings. You can even make changes to them using this tool.
@@ -84,11 +84,7 @@ Now create a new simple Linux VM using an existing template. First, find the tem
       --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-simple-linux/azuredeploy.json
   ```
 
-1. You may notice there was a problem... but there isn't much information here explaining what happened so let's look at the logs. The following command will tell Azure to show the logs for the last deployment in this group:
-
-  ```shell
-  azure group log show -g "new-vm-group" --last-deployment
-  ```
+1. You may notice there was a problem... but there isn't much information here explaining what happened so let's look at the logs. Open the error file `azure.err`.
 
 1. The logs are presented in reverse order so the most recent log entry is at the top and the oldest is at the bottom. Start slowly scrolling up investigating the **Status** field. Eventually you will get to an error... investigating the error message you can see the following:
 
@@ -105,13 +101,6 @@ Now create a new simple Linux VM using an existing template. First, find the tem
   ```
 
   The name we used has capital letters which is clearly not allowed.
-
-1. Delete and recreate the resource group:
-
-  ```shell
-  azure group delete -n "new-vm-group"
-  azure group create --name "new-vm-group" --location "eastus"
-  ```
 
 1. Update the `parameters.json` file to set the `dnsLabelPrefix` to **myumbuntuvm**, save your changes and rerun the script, except this time add two more parameters:
   - `--nowait`: tell the CLI to create the deployment, but don't wait for it to complete

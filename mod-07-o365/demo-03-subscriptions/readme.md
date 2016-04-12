@@ -11,12 +11,11 @@ This demo shows how to query subscriptions using the Partner Center SDK.
   - `IScenarioContext.UserPartnerOperations()`
   - `IScenarioContext.LoginUserToAad()`
 1. Show the file for different service request actions:
-  - `Features\Subscriptions\Subscriptions.cs`
-  - `Features\Subscriptions\GetSubscription.cs`
-  - `Features\Subscriptions\SubscriptionPaging.cs`
-  - `Features\Subscriptions\SubscriptionAddons.cs`
-  - `Features\Subscriptions\SubscriptionsByOrder.cs`
-  - `Features\Subscriptions\UpdateSubscription.cs`
+  - `Subscriptions\GetSubscriptions.cs`
+  - `Subscriptions\GetSubscription.cs`
+  - `Subscriptions\GetSubscriptionAddOn.cs`
+  - `Subscriptions\GetSubscriptionsByOrder.cs`
+  - `Subscriptions\UpdateSubscription.cs`
 
 ## Partner Center REST API
 

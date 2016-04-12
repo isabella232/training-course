@@ -11,21 +11,21 @@ using Newtonsoft.Json;
 
 namespace Microsoft.Partner.CSP.Api.V1.Samples {
   class OfferCatalogPartnerCenterApi {
-    public static dynamic GetOfferCategories(string countryCode, string locale, string token) {
+    public static dynamic GetOfferCategories(string countryCode, string token) {
 
       // create endpoint to the Partner Center REST API
-      var endpoint = string.Format("{0}/v1/offercategories?country={1}&locale={2}",
+      var endpoint = string.Format("{0}/v1/offercategories?country={1}",
                                     ConfigurationManager.AppSettings["PartnerCenterApiEndpoint"],
-                                    countryCode,
-                                    locale);
+                                    countryCode);
       
       // create request with common headers
       var request = (HttpWebRequest)HttpWebRequest.Create(endpoint);
       request.Method = "GET";
       request.Accept = "application/json";
-      
+
       // set HTTP request headers
       request.Headers.Add("MS-Contract-Version", "v1");
+      request.Headers.Add("X-Locale", "en-US");
       request.Headers.Add("MS-CorrelationId", Guid.NewGuid().ToString());
       request.Headers.Add("MS-RequestId", Guid.NewGuid().ToString());
       
@@ -61,13 +61,12 @@ namespace Microsoft.Partner.CSP.Api.V1.Samples {
       return string.Empty;
     }
 
-    public static dynamic GetOffers(string offerCategoryId, string countryCode, string locale, string token) {
+    public static dynamic GetOffers(string offerCategoryId, string countryCode, string token) {
 
       // create endpoint to the Partner Center REST API
-      var endpoint = string.Format("{0}/v1/offers?country={1}&locale={2}&offer_category_id={3}", 
+      var endpoint = string.Format("{0}/v1/offers?country={1}&offer_category_id={2}", 
                                     ConfigurationManager.AppSettings["PartnerCenterApiEndpoint"], 
                                     countryCode, 
-                                    locale, 
                                     offerCategoryId);
 
       // create request with common headers
@@ -77,6 +76,7 @@ namespace Microsoft.Partner.CSP.Api.V1.Samples {
 
       // set HTTP request headers
       request.Headers.Add("MS-Contract-Version", "v1");
+      request.Headers.Add("X-Locale", "en-US");
       request.Headers.Add("MS-CorrelationId", Guid.NewGuid().ToString());
       request.Headers.Add("MS-RequestId", Guid.NewGuid().ToString());
 
