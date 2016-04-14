@@ -8,7 +8,7 @@ Pre-requisites for the course are that the viewer already has experience as a de
 
 ## Modules - Lectures & Demos
 
-> The moduls in this course have been recorded and are available in the **[Cloud Solution Provider Developers](https://channel9.msdn.com/Series/cspdev)** series on Channel9.
+> The modules in this course have been recorded and are available in the **[Cloud Solution Provider Developers](https://channel9.msdn.com/Series/cspdev)** series on Channel9.
 
 1. **[Introductory System Concepts and Getting Started with the Partner Center SDK](mod-01-overview)**
 
@@ -79,5 +79,6 @@ The labs are written for developers using the .NET Framework in C# using Visual 
 
 | Date | Comment |
 | ----: | ------- |
+| April 14, 2016 | Add module recording links |
 | March 17, 2016 | Added HOL #1, #2. |
 | March 15, 2016 | Initial version. |
