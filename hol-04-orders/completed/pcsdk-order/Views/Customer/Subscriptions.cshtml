@@ -1,0 +1,43 @@
+﻿@model pcsdk_order.Models.CustomerSubscriptionViewModel
+
+@{
+  ViewBag.Title = "Subscriptions";
+}
+
+<h2>@Model.Customer.CompanyName - Subscriptions</h2>
+
+<table class="table">
+  <tr>
+    <th>Subscription</th>
+    <th>Quantity</th>
+    <th>Status</th>
+    <th></th>
+  </tr>
+
+  @foreach (var item in Model.CustomerSubscriptions) {
+    <tr>
+      <td>
+        @Html.HiddenFor(modelItem => item.Id)
+        <strong>@Html.DisplayFor(modelItem => item.Offer.Name)</strong><br />
+        <em>@Html.DisplayFor(modelItem => item.Offer.Description)</em>
+      </td>
+      <td>@Html.DisplayFor(modelItem => item.Quantity)</td>
+      <td>@Html.DisplayFor(modelItem => item.Status)</td>
+      <td>
+        @if (item.Offer.UnitType == "Licenses") {
+          if (item.Offer.MaxQuantity > item.Quantity) {
+            @Html.ActionLink("add licenses", "AddLicense", "Customer",
+                   new {
+                     customerId = Model.Customer.Id,
+                     subscriptionId = item.Id
+                   }, null)
+          } else {
+            @Html.Raw("Max license limit reached, would you like to ") @Html.ActionLink("transition", "UpgradeSubscription", "Customer", new { customerId = Model.Customer.Id, subscriptionId = item.Id }, null) @Html.Raw(" to another license?")
+          }
+        }
+      </td>
+
+    </tr>
+  }
+
+</table>
