@@ -1,0 +1,29 @@
+﻿@model  azurearm.Models.AzureResourceGroupsViewModel
+
+<h2>Resource Groups in Azure Subscription: @(Model.AzureSubscriptionId) </h2>
+
+<p>
+  @Html.ActionLink("Create New Resource Group", "CreateRG")
+</p>
+<table class="table">
+  <tr>
+    <th>Resource Group Name</th>
+    <th>Azure Region Location</th>
+    <th></th>
+  </tr>
+
+  @foreach (var item in Model.ResourceGroups) {
+    <tr>
+      <td>
+        @Html.DisplayFor(modelItem => item.Name)
+      </td>
+      <td>
+        @Html.DisplayFor(modelItem => item.Location)
+      </td>
+      <td>
+        @Html.ActionLink("Contents", "Contents", new { groupName = item.Name })
+      </td>
+    </tr>
+  }
+
+</table>

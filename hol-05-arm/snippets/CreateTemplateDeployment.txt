@@ -1,0 +1,52 @@
+public static async Task CreateTemplateDeployment(string resourceGroup, string vmType, string adminUsername, string adminPassword, string dnsName) {
+  // create a new template deployment...
+  var armTemplateDeploymentRequest = new ArmTemplateDeploymentRequest {
+    Properties = new ArmTemplateDeploymentRequestProperties {
+      Mode = "Incremental",
+      TemplateLink = new Templatelink {
+        ContentVersion = "1.0.0.0"
+      },
+      Parameters = new ArmTemplateDeploymentRequestParameters {
+        AdminUsername = new TemplateParameter { Value = adminUsername },
+        AdminPassword = new TemplateParameter { Value = adminPassword },
+        DnsLabel = new TemplateParameter { Value = dnsName }
+      }
+    }
+  };
+
+  // add the template & OS version depending on the template
+  if (vmType == "windows") {
+    armTemplateDeploymentRequest.Properties.TemplateLink.Uri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json";
+    armTemplateDeploymentRequest.Properties.Parameters.WindowsOsVersion = new TemplateParameter { Value = "2008-R2-SP1" };
+  } else {
+    armTemplateDeploymentRequest.Properties.TemplateLink.Uri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-linux/azuredeploy.json";
+    armTemplateDeploymentRequest.Properties.Parameters.UbuntuOsVersion = new TemplateParameter { Value = "14.04.2-LTS" };
+  }
+
+  // get access token
+  var accessToken = await AadAuthHelper.GetAadAuthToken(SettingsHelper.AzureManagementApiResourceId);
+
+  // create request
+  var azQueryPath = string.Format("subscriptions/{0}/resourcegroups/{1}/providers/microsoft.resources/deployments/{2}/?api-version=2016-02-01",
+    SettingsHelper.AzureSubscriptionId,
+    resourceGroup,
+    Guid.NewGuid().ToString());
+  var query = string.Format(SettingsHelper.AzureManagementApiEndpoint, azQueryPath);
+  var request = (HttpWebRequest)HttpWebRequest.Create(query);
+  request.Method = "PUT";
+  request.ContentType = "application/json";
+  request.Accept = "application/json";
+  request.Headers.Add("Authorization", "Bearer " + accessToken);
+
+  // create payload
+  string content = JsonConvert.SerializeObject(armTemplateDeploymentRequest,
+    Formatting.None,
+    new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore }
+  );
+  using (var writer = new StreamWriter(request.GetRequestStream())) {
+    writer.Write(content);
+  }
+
+  // submit request
+  await request.GetResponseAsync();
+}
