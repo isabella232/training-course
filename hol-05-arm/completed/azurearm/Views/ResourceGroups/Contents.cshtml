@@ -1,0 +1,29 @@
+﻿@model  azurearm.Models.AzureResourceGroupContentsViewModel
+
+<h2>VMs in Resource Group: @(Model.ResourceGroup)</h2>
+
+<p>
+  @Html.ActionLink("Create New Virtual Machine", "CreateVM", new { groupName = Model.ResourceGroup })
+</p>
+<table class="table">
+  <tr>
+    <th>Resource Type</th>
+    <th>Name</th>
+    <th>Location</th>
+  </tr>
+
+  @foreach (var item in Model.Contents) {
+    <tr>
+      <td>
+        @Html.DisplayFor(modelItem => item.Type)
+      </td>
+      <td>
+        @Html.DisplayFor(modelItem => item.Name)
+      </td>
+      <td>
+        @Html.DisplayFor(modelItem => item.Location)
+      </td>
+    </tr>
+  }
+
+</table>

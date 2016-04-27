@@ -1,0 +1,32 @@
+private static async Task<IEnumerable<AzureResourceGroupItem>> GetClassicVms(string groupName) {
+  // get access token
+  var accessToken = await AadAuthHelper.GetAadAuthToken(SettingsHelper.AzureManagementApiResourceId);
+
+  // setup authenticated http client
+  var httpClient = new HttpClient();
+  httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
+  httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accessToken);
+
+  // create request to get all classic VMs
+  var azQueryPath = string.Format("subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ClassicCompute/virtualMachines/?api-version=2015-06-01", SettingsHelper.AzureSubscriptionId, groupName);
+  var query = string.Format(SettingsHelper.AzureManagementApiEndpoint, azQueryPath);
+  var request = new HttpRequestMessage(HttpMethod.Get, query);
+
+  // issue request and convert response to typed object
+  var response = await httpClient.SendAsync(request);
+  var rawResponseString = await response.Content.ReadAsStringAsync();
+  var azResponse = JsonConvert.DeserializeObject<AzureVirtualMachines>(rawResponseString);
+
+  // convert to normal collection
+  List<AzureResourceGroupItem> contents = new List<AzureResourceGroupItem>();
+  foreach (var item in azResponse.Items) {
+    contents.Add(new AzureResourceGroupItem {
+      Id = item.id,
+      Type = "Virtual Machine (Classic)",
+      Name = item.name,
+      Location = item.location
+    });
+  }
+
+  return contents;
+}

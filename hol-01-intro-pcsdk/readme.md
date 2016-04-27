@@ -6,6 +6,7 @@ The Partner Center SDK provides a superset of the earlier CREST API functionalit
 
 This Hands on Lab is hosted online [here](http://aka.ms/pcsdkhol).
 
+
 ## Exercise 1: Create an Azure AD Application
 
 In this exercise you will create a new Azure AD application, granting it access to the Partner Center.
