@@ -73,7 +73,6 @@ The labs are written for developers using the .NET Framework in C# using Visual 
 1. **[Implementing Parameter Validation for Managing Customers](hol-03-validation)**
 1. **[Avoiding Common Order Submission Issues](hol-04-orders)**
 1. **[Adding Resources to a new Azure Subscription](hol-05-arm)**
-1. Working with Rated Usage Data (*coming soon*)
 
 ## Revision History
 
