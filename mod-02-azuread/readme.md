@@ -6,4 +6,4 @@ This module describes how the Partner Center SDK uses Azure AD directories. It i
 
 ## Watch the Module
 
-This module has been recorded and is available in the **[Cloud Solution Provider Developers](https://channel9.msdn.com/Series/cspdev)** series here: **[Module 2 Authentication for Partner Center SDK](https://channel9.msdn.com/Series/cspdev/Module-2-Authentication-for-Partner-Center-SDK)**
+This module has been recorded and is available in the **[Cloud Solution Provider Developers](https://channel9.msdn.com/Series/cspdev)** series here: **[Module 2 Authentication for Partner Center SDK](https://channel9.msdn.com/Series/cspdev/Module-2-Authentication-for-Partner-Center-SDK)**

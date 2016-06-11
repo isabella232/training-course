@@ -6,4 +6,4 @@ This module describes REST and JSON since those are the protocols that the Partn
 
 ## Watch the Module
 
-This module has been recorded and is available in the **[Cloud Solution Provider Developers](https://channel9.msdn.com/Series/cspdev)** series here: **[Module 4 REST + JSON Primer & Debugging API Calls](https://channel9.msdn.com/Series/cspdev/Module-4-REST--JSON-Primer--Debugging-API-Calls)**
+This module has been recorded and is available in the **[Cloud Solution Provider Developers](https://channel9.msdn.com/Series/cspdev)** series here: **[Module 4 REST + JSON Primer & Debugging API Calls](https://channel9.msdn.com/Series/cspdev/Module-4-REST--JSON-Primer--Debugging-API-Calls)**

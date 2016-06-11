@@ -86,6 +86,7 @@ The labs are written for developers using the .NET Framework in C# using Visual 
 
 | Date | Comment |
 | ----: | ------- |
+| June 11, 2016 | Updated module readme's with video links & fixed few typos. |
 | June 10, 2016 | Added modules 14 & 15 on Azure Billing REST API. |
 | May 31, 2016 | Update module 13 with UX from Partner Center dashboard for Azure spending limit. |
 | April 27, 2016 | Added HOL #5. |
